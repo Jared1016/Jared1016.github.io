@@ -1,0 +1,304 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>(MAC)利用gitpage和Hexo创建独立博客(详细教程一) | 欢迎来到Jared的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jared">
+    
+    <meta name="description" content="MAC系统介绍   Mac系统是基于BSD类型操作系统完善修改的,和Linux有着很近的血缘关系,所以很多的Linux指令在MacOS的终端中都是有效且快捷的.下面给大家介绍一些基本的终端指令.这是作为编程开发者的基本必修课.
+独立博客很多人已经养成了坚持写博客的习惯，但是论坛博客总有兴盛和衰落，而">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="欢迎来到Jared的博客" title="欢迎来到Jared的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="欢迎来到Jared的博客">欢迎来到Jared的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/08/blog/" title="(MAC)利用gitpage和Hexo创建独立博客(详细教程一)" itemprop="url">(MAC)利用gitpage和Hexo创建独立博客(详细教程一)</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Jared">Jared</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-01-08T05:23:55.000Z" itemprop="datePublished">2016-01-08</time>
+    更新日期:<time datetime="2016-01-08T05:23:55.000Z" itemprop="dateModified">2016-01-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MAC_u7CFB_u7EDF_u4ECB_u7ECD"><span class="toc-number">1.</span> <span class="toc-text">MAC系统介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u72EC_u7ACB_u535A_u5BA2"><span class="toc-number">2.</span> <span class="toc-text">独立博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gitpage_u7684_u521B_u5EFA"><span class="toc-number">3.</span> <span class="toc-text">Gitpage的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u642D_u5EFA_u672C_u5730_u73AF_u5883hexo"><span class="toc-number">4.</span> <span class="toc-text">搭建本地环境hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git_u73AF_u5883_u642D_u5EFA"><span class="toc-number">5.</span> <span class="toc-text">Git环境搭建</span></a></li></ol>
+		</div>
+		
+		<h3 id="MAC_u7CFB_u7EDF_u4ECB_u7ECD"><a href="#MAC_u7CFB_u7EDF_u4ECB_u7ECD" class="headerlink" title="MAC系统介绍"></a>MAC系统介绍</h3><p>   Mac系统是基于BSD类型操作系统完善修改的,和Linux有着很近的血缘关系,所以很多的Linux指令在MacOS的终端中都是有效且快捷的.下面给大家介绍一些基本的终端指令.这是作为编程开发者的基本必修课.</p>
+<h3 id="u72EC_u7ACB_u535A_u5BA2"><a href="#u72EC_u7ACB_u535A_u5BA2" class="headerlink" title="独立博客"></a>独立博客</h3><p>很多人已经养成了坚持写博客的习惯，但是论坛博客总有兴盛和衰落，而且最悲剧的是，通常不会持续几年，而我们做一件事是会做很久的，所以最后的结果就是不停地搬博客，博主有过这样的惨痛的经历，深知其中的苦与泪。于是一些优秀的程序猿开始找寻简便快捷长久而不失水准的发布博客的方法，于是便有了gitPage+Hexo的发布博客的方式。</p>
+<h3 id="Gitpage_u7684_u521B_u5EFA"><a href="#Gitpage_u7684_u521B_u5EFA" class="headerlink" title="Gitpage的创建"></a>Gitpage的创建</h3><p>gitPage是github推出一个可以显示静态网页的服务。而对于我们的博客来说，基本除了评论的模块之外，剩下的都是静态网页，所以完全可以满足我们的需求，我们将我们的博客做成静态网页传到gitPage上就行，然后我们就可以在浏览器里访问到我们的网站了。</p>
+<ol>
+<li><p>User/Organization Pages 个人或公司站点</p>
+<p>1) 使用自己的用户名，每个用户名下面只能建立一个；</p>
+<p>2) 资源命名必须符合这样的规则username/username.github.com；</p>
+<p>3) 主干上内容被用来构建和发布页面</p>
+</li>
+<li><p>Project Pages 项目站点</p>
+<p>1) gh-pages分支用于构建和发布；</p>
+<p>2) 如果user/org pages使用了独立域名，那么托管在账户下的所有project pages将使用相同的域名进行重定向，除非project pages使用了自己的独立域名；</p>
+</li>
+</ol>
+<h3 id="u642D_u5EFA_u672C_u5730_u73AF_u5883hexo"><a href="#u642D_u5EFA_u672C_u5730_u73AF_u5883hexo" class="headerlink" title="搭建本地环境hexo"></a>搭建本地环境hexo</h3><p>1 在安装hexo之前先安装Nodejs（直接去官网也好，百度也可，下载一个安装包，安装就行，简便快捷，这个方式比较推荐。）<br>2 安装完hexo之后打开终端输入命令</p>
+<p>sudo npm install -g hexo</p>
+<p>如果不出意外，本地hexo环境搭建完成。</p>
+<p>3 在本地生成的hexo文件下有一个source文件夹打开有一个以.md为后缀的文件，以后我们写博客就要在这个文件里面写。如果要博客分条就重新在创建一个.md文件。<br>4 当在.md里面写完博客的时候你可以在本地查看你在网页上博客的显示样式<br>  1）打开终端  （此命令含义  让hexo生成的网页在本地浏览器上可见，本人理解）  </p>
+<p>   sudo hexo s </p>
+<p>  2）在本地浏览器输入以下命令查看写的博客。  </p>
+<pre><code>localhost:4000
+</code></pre><p>  3）在终端输入  </p>
+<p>   sudo hexo g</p>
+<p>   把写好的网页文件保存在hexo文件夹下，打开Finder在公共（或者public）里面会发现多出好多文件以及文件夹，就是hexo生成的，（记住此位置，以后会用到）；</p>
+<h3 id="Git_u73AF_u5883_u642D_u5EFA"><a href="#Git_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Git环境搭建"></a>Git环境搭建</h3><p>下载GitHub Desktop客户端安装本地。<br>Git环境搭建 git的搭建，首先需要申请一个github账号。 有了账号之后，登陆进去，new一个repository,仓库的名字必须是[用户名.github.io],注意,这里的名字是固定的,主要作用是限制每个账号只能有一个GitPage主页. 然后，下载一个github客户端，用于将我们的静态网页上传到刚才创建的代码仓库中。 这里解释一下，github上传代码和文件有两种，条条大路通罗马，不论用何种办法，能把东西传到github上的方法就是好方法。这里我采用的是客户端上传的方法，我个人觉得这样在使用的过程中清晰明了，操作快捷一些。部分网友喜欢使用命令行的方式操作git,我也是比较支持的,看个人爱好吧.<br>安装完成github Desktop之后，登录你的github账号，点击左上角的（+）加号，把你的仓库clone到本地。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/01/08/blog/" data-title="(MAC)利用gitpage和Hexo创建独立博客(详细教程一) | 欢迎来到Jared的博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/01/08/MAC/"  title="Mac中常用的终端命令">
+ <strong>NEXT:</strong><br/> 
+ <span>Mac中常用的终端命令
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MAC_u7CFB_u7EDF_u4ECB_u7ECD"><span class="toc-number">1.</span> <span class="toc-text">MAC系统介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u72EC_u7ACB_u535A_u5BA2"><span class="toc-number">2.</span> <span class="toc-text">独立博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gitpage_u7684_u521B_u5EFA"><span class="toc-number">3.</span> <span class="toc-text">Gitpage的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u642D_u5EFA_u672C_u5730_u73AF_u5883hexo"><span class="toc-number">4.</span> <span class="toc-text">搭建本地环境hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git_u73AF_u5883_u642D_u5EFA"><span class="toc-number">5.</span> <span class="toc-text">Git环境搭建</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="Jared">Jared</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
