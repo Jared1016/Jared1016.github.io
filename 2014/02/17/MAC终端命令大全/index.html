@@ -51,27 +51,19 @@
 
 
 
-<meta name="description" content="一、静态库和动态库的区别：静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。
-二、静态库简介：1、静态库分为真">
+<meta name="description" content="Mac系统是基于BSD类型操作系统完善修改的,和Linux有着很近的血缘关系,所以很多的Linux指令在MacOS的终端中都是有效且快捷的.下面给大家介绍一些基本的终端指令.这是作为编程开发者的基本必修课.
+文件相关指令下面列举一些常用的命令1 ls显示所有的子文件及文件夹参数 -w 显示中文，-l 详细信息， -a 包括隐藏文件示例:ls -l2 cd进入指定目录例如:进入到桌面文件夹下cd D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xcode7  中创建静态库">
-<meta property="og:url" content="http://yoursite.com/2016/01/12/Xcode7-0-静态库的制作/index.html">
+<meta property="og:title" content="Mac中常用的终端命令">
+<meta property="og:url" content="http://yoursite.com/2014/02/17/MAC终端命令大全/index.html">
 <meta property="og:site_name" content="Jared">
-<meta property="og:description" content="一、静态库和动态库的区别：静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。
-二、静态库简介：1、静态库分为真">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c04e18b7jw1ezwzpznrvaj211p0lqdj9.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c04e18b7jw1ezwzqduw9qj212w0q6jwg.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxtx9zcj1j20hb03nwfa.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c04e18b7gw1ezxtxf7antj20he027wex.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c04e18b7gw1ezxtzpkpg7j20l70bqq4d.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxu9huq5cj20g404h402.jpg">
-<meta property="og:updated_time" content="2016-01-13T06:23:12.000Z">
+<meta property="og:description" content="Mac系统是基于BSD类型操作系统完善修改的,和Linux有着很近的血缘关系,所以很多的Linux指令在MacOS的终端中都是有效且快捷的.下面给大家介绍一些基本的终端指令.这是作为编程开发者的基本必修课.
+文件相关指令下面列举一些常用的命令1 ls显示所有的子文件及文件夹参数 -w 显示中文，-l 详细信息， -a 包括隐藏文件示例:ls -l2 cd进入指定目录例如:进入到桌面文件夹下cd D">
+<meta property="og:updated_time" content="2016-01-22T11:38:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xcode7  中创建静态库">
-<meta name="twitter:description" content="一、静态库和动态库的区别：静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。
-二、静态库简介：1、静态库分为真">
+<meta name="twitter:title" content="Mac中常用的终端命令">
+<meta name="twitter:description" content="Mac系统是基于BSD类型操作系统完善修改的,和Linux有着很近的血缘关系,所以很多的Linux指令在MacOS的终端中都是有效且快捷的.下面给大家介绍一些基本的终端指令.这是作为编程开发者的基本必修课.
+文件相关指令下面列举一些常用的命令1 ls显示所有的子文件及文件夹参数 -w 显示中文，-l 详细信息， -a 包括隐藏文件示例:ls -l2 cd进入指定目录例如:进入到桌面文件夹下cd D">
 
 
 
@@ -83,7 +75,7 @@
   };
 </script>
 
-  <title> Xcode7  中创建静态库 | Jared </title>
+  <title> Mac中常用的终端命令 | Jared </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -193,7 +185,7 @@
             
             
               
-                Xcode7  中创建静态库
+                Mac中常用的终端命令
               
             
           </h1>
@@ -202,8 +194,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-12T20:01:43+08:00" content="2016-01-12">
-              2016-01-12
+            <time itemprop="dateCreated" datetime="2014-02-17T20:03:27+08:00" content="2014-02-17">
+              2014-02-17
             </time>
           </span>
 
@@ -213,8 +205,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/12/Xcode7-0-静态库的制作/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/Xcode7-0-静态库的制作/" itemprop="commentsCount"></span>
+                <a href="/2014/02/17/MAC终端命令大全/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/02/17/MAC终端命令大全/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -233,34 +225,16 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u4E00_u3001_u9759_u6001_u5E93_u548C_u52A8_u6001_u5E93_u7684_u533A_u522B_uFF1A"><a href="#u4E00_u3001_u9759_u6001_u5E93_u548C_u52A8_u6001_u5E93_u7684_u533A_u522B_uFF1A" class="headerlink" title="一、静态库和动态库的区别："></a>一、静态库和动态库的区别：</h3><p>静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。</p>
-<h3 id="u4E8C_u3001_u9759_u6001_u5E93_u7B80_u4ECB_uFF1A"><a href="#u4E8C_u3001_u9759_u6001_u5E93_u7B80_u4ECB_uFF1A" class="headerlink" title="二、静态库简介："></a>二、静态库简介：</h3><p>1、静态库分为真机—Debug（调试）版本、真机—Release（发布）版本、模拟器—Debug版本、模拟器—Release版本；开发中一般都打包Release（发布）版本，将真机和模拟器版本合并，提供外界。</p>
-<p>2、使用场景：在项目开发的过程中，例如两个公司之间业务交流，不可能把源代码都发送给另一个公司，这时候将私密内容打包成静态库，别人只能调用接口，而不能知道其中实现的细节。</p>
-<h3 id="u4E09_u3001_u7528Xcode7_u521B_u5EFA_u9759_u6001_u5E93"><a href="#u4E09_u3001_u7528Xcode7_u521B_u5EFA_u9759_u6001_u5E93" class="headerlink" title="三、用Xcode7创建静态库"></a>三、用Xcode7创建静态库</h3><p>.a文件版本（以制作AFNetworking静态库为例）</p>
-<p>1、新建项目，点击iOS—Framework&amp;—Cocoa Touch Static Library。<br><img src="http://ww1.sinaimg.cn/mw690/c04e18b7jw1ezwzpznrvaj211p0lqdj9.jpg"></p>
-<p>给你的工程命名为StaticLib</p>
-<p>2、系统自动生成以工程名命名的.h和.m文件，可自定义的在目录下添加或删除文件，注意目录下Products文件夹有一个.a文件为红色，说明文件并不存在。这里我们将系统生成的.h和.m文件删除。</p>
-<p>将要创建静态库的所有文件导入工程目录下</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg"></p>
-<p>3、点击Build Phases—Copy Files，左下角点击+号按钮，添加你需要暴露的接口头文件。如果你在静态库工程中使用了category，那么你可能会碰到链接问题，解决的办法就是需要同时在生成静态库的工程和使用静态库的工程中使用“-all_load”编译选项，即在对应target的”Build Settings”中的“Other Linker Flags”选项添加“-all_load”，注意：使用静态库的工程中是一定要加该编译选项的！至于生成静态库的工程中加不加没有试过，不过建议还是加上该编译选项。</p>
-<p>点击Add添加</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg"></p>
-<p>4、然后点击左上角，选择Edit Scheme，Build Configuration下选择Release，先注意检查下面Release是否为NO：Yes表示只编译选中模拟器设备对应的架构，No则为编译所有模拟器设备支持的cup架构（Debug版本同理）,选择NO，然后分别在模拟器和真机下Command+B编译一下，会看到Products文件夹下的.a文件变为黑色，这个.a文件就是我们想要得到的静态库，这里会出现一个问题你先编译的模拟器会发现.a依然是红色，你需要模拟器和真机都编译后.a才会变成黑色，这应该是Xcode本身的问题。</p>
-<p><img src="http://ww4.sinaimg.cn/mw690/c04e18b7jw1ezwzqduw9qj212w0q6jwg.jpg"></p>
-<p>注：关于静态库对CPU架构的支持，首先了解iOS设备CPU架构方面的知识，ARM是微处理器行业的一家知名企业，arm处理器以体积小和高性能的优势在嵌入式设备中广泛使用，几乎所有手机都是使用它的。</p>
-<p>模拟器：iphone4s~5 : i386 iphone5s~6plus : x86_64</p>
-<p>真机：iphone3gs~4s : armv7  iphone5~5c : armv7s （静态库只要支持了armv7，就可以跑在armv7s的架构上） iphone5s~6plus : arm64</p>
-<p>armv6, armv7, armv7s是ARM CPU的不同指令集，原则是向下兼容的。例如iPhone4S CPU支持armv7, 但它同时兼容armv6，只是使用armv6指令可能无法充分发挥它的特性。</p>
-<p>这里再补充一下查看静态库.a对处理器架构的支持，先cd到.a文件的路径下，命令行输入：lipo -info xxxxx.a</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxtx9zcj1j20hb03nwfa.jpg"></p>
-<p>5、通过终端打开路径/Users/shelin/Library/Developer/Xcode/DerivedData/，选择对应的工程文件夹。</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/c04e18b7gw1ezxtxf7antj20he027wex.jpg"></p>
-<p>打开Build—Products文件夹，会看到Release-iphoneos和Release-iphonesimulator文件夹，分别是真机和模拟器的.a文件，为了使用方便我们将两个版本的.a文件合并。</p>
-<p><img src="http://ww4.sinaimg.cn/mw690/c04e18b7gw1ezxtzpkpg7j20l70bqq4d.jpg"></p>
-<p>6、合并真机和模拟器.a文件，在终端输入以下命令行：lipo -create  模拟器.a文件的路径 真机.a文件的路径 -output 合并后的保存路径（例：lipo -create /Users/lanou3g/Library/Developer/Xcode/DerivedData/StaticLib-bclobqjuiutnrobrjacafgddptem/Build/Products/Release-iphoneos/libStaticLib.a  /Users/lanou3g/Library/Developer/Xcode/DerivedData/StaticLib-bclobqjuiutnrobrjacafgddptem/Build/Products/Release-iphonesimulator/libStaticLib.a  -output /Users/lanou3g/Desktop/StaticLib.a）最终会在桌面得到一个合并后的StaticLib.a文件，再将暴露出来的.h头文件一起复制出来。</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxu9huq5cj20g404h402.jpg"></p>
-<p>7、使用：只需将.a和暴露出来的.h头文件导入工程目录下就可供外界使用。</p>
-<p>8、.framework待研究。</p>
+        <span itemprop="articleBody"><p>Mac系统是基于BSD类型操作系统完善修改的,和Linux有着很近的血缘关系,所以很多的Linux指令在MacOS的终端中都是有效且快捷的.下面给大家介绍一些基本的终端指令.这是作为编程开发者的基本必修课.</p>
+<h3 id="u6587_u4EF6_u76F8_u5173_u6307_u4EE4"><a href="#u6587_u4EF6_u76F8_u5173_u6307_u4EE4" class="headerlink" title="文件相关指令"></a>文件相关指令</h3><p>下面列举一些常用的命令<br>1 ls<br>显示所有的子文件及文件夹<br>参数 -w 显示中文，-l 详细信息， -a 包括隐藏文件<br>示例:<br>ls -l<br>2 cd<br>进入指定目录<br>例如:进入到桌面文件夹下<br>cd Desktop<br>3 mkdir<br>建立新目录<br>例如:在当前文件夹下创建一个文件夹,名字叫”backup”<br>mkdir backup<br>4 touch<br>创建文件<br>例如:在当前文件夹下创建一个名字是”test”文本文件<br>touch test.txt<br>5 cp<br>拷贝文件<br>例如：想把桌面的drivers 拷贝到驱动目录中<br>cp -R /User/用户名/Desktop/drivers  /System/Library/Extensions<br>参数R表示对目录进行递归操作,递归进行,把文件夹中的所有东西全部拷贝<br>再例如:把驱动目录下的所有文件备份到桌面backup<br>cp -R /System/Library/Extensions/*   /User/用户名/Desktop/backup<br>6 mv<br>移动文件<br>例如：想把test.txt 移到桌面<br>mv test.txt /User/coderqi/Desktop<br>7 rm<br>删除文件<br>例：想删除桌面的backup文件夹<br>rm -rf/User/coderqi/Desktop/backup<br>参数－rf 表示递归和强制.<br>注意:!!!!千万要小心使用，如果执行了 “rm -rf /“ 你的系统就全没了8 chmod<br>更改文件权限<br>例：把驱动目录下所有文件设定到root读写，其他用户只读<br>chmod -R 755 /System/Library/Extensions<br>参数R 表示递归，755表示各用户的权限<br>7 = 1 + 2 + 4<br>1 -r 代表读<br>2 -w 代表写<br>3 -x 代表运行<br>9 sudo<br>sudo命令：任何命令前都可以加上sudo，sudo表示是获取用户权限，通常是管理员权限.可直接管理系统中较重要的文件，一般使用需要询问密码。输入用户密码后，才能完成操作。<br>例如:执行关机</p>
+<p>sudo shutdown -h now</p>
+<h3 id="u5229_u7528Vi_u7F16_u8F91_u5668_u7F16_u8F91_u6587_u4EF6"><a href="#u5229_u7528Vi_u7F16_u8F91_u5668_u7F16_u8F91_u6587_u4EF6" class="headerlink" title="利用Vi编辑器编辑文件"></a>利用Vi编辑器编辑文件</h3><p>Vi是*inux自带的一个强大的文本编辑器,采用命令行的方式进行文本的编辑和保存.<br>Vi编辑器常用的命令有三个.</p>
+<p>1 打开文件</p>
+<p>例如:打开names.txt文件</p>
+<p>vi names.txt</p>
+<p>这个指令是以只读的形式打开文件的,这个时候按键盘上的大部分按键都是无效的.如果想编写文件,需要下面的指令.<br>2 编写文件</p>
+<p>开始编写的指令有两个,实现的效果是一样的.直接按键盘上的”i”或者”a”,这两个指令的作用都是让编辑器进入对文件的编辑状态</p>
+<p>3 保存退出<br>在编辑状态按Esc键,会回到打开文件的状态,这个时候输入”:wq”(就是write And quite的意思)就会保存并退出Vi编辑器.</p>
 </span>
       
     </div>
@@ -272,13 +246,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/02/19/iOS-系统自带地图-定位功能/" rel="next" title="iOS开发-系统自带地图,定位功能">
-                <i class="fa fa-chevron-left"></i> iOS开发-系统自带地图,定位功能
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/02/20/创建blog_1/" rel="prev" title="(MAC)利用gitpage和Hexo创建独立博客(详细教程一)">
+                (MAC)利用gitpage和Hexo创建独立博客(详细教程一) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -293,10 +267,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/12/Xcode7-0-静态库的制作/"
-     data-title="Xcode7  中创建静态库"
+        <div class="ds-share flat" data-thread-key="2014/02/17/MAC终端命令大全/"
+     data-title="Mac中常用的终端命令"
      data-content=""
-     data-url="http://yoursite.com/2016/01/12/Xcode7-0-静态库的制作/">
+     data-url="http://yoursite.com/2014/02/17/MAC终端命令大全/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -327,8 +301,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/12/Xcode7-0-静态库的制作/"
-           data-title="Xcode7  中创建静态库" data-url="http://yoursite.com/2016/01/12/Xcode7-0-静态库的制作/">
+      <div class="ds-thread" data-thread-key="2014/02/17/MAC终端命令大全/"
+           data-title="Mac中常用的终端命令" data-url="http://yoursite.com/2014/02/17/MAC终端命令大全/">
       </div>
     
   </div>
@@ -436,7 +410,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00_u3001_u9759_u6001_u5E93_u548C_u52A8_u6001_u5E93_u7684_u533A_u522B_uFF1A"><span class="nav-number">1.</span> <span class="nav-text">一、静态库和动态库的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C_u3001_u9759_u6001_u5E93_u7B80_u4ECB_uFF1A"><span class="nav-number">2.</span> <span class="nav-text">二、静态库简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E09_u3001_u7528Xcode7_u521B_u5EFA_u9759_u6001_u5E93"><span class="nav-number">3.</span> <span class="nav-text">三、用Xcode7创建静态库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6587_u4EF6_u76F8_u5173_u6307_u4EE4"><span class="nav-number">1.</span> <span class="nav-text">文件相关指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5229_u7528Vi_u7F16_u8F91_u5668_u7F16_u8F91_u6587_u4EF6"><span class="nav-number">2.</span> <span class="nav-text">利用Vi编辑器编辑文件</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

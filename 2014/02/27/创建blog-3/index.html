@@ -51,27 +51,40 @@
 
 
 
-<meta name="description" content="一、静态库和动态库的区别：静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。
-二、静态库简介：1、静态库分为真">
+<meta name="description" content="本期来介绍一下博客主题的修改和关联域名
+配置博主信息在Hexo根目录下面有一个文件:_config.yml,这是Hexo的配置文件.关于生成的网站的主体信息都是在这里进行的设置.主要有下面的几个属性.
+title: 博客网站的标题
+subtitle: 子标题
+description: 描述
+author: 作者名字
+还有一个就是靠近最底下的一个属性
+theme: 设置生成样式的主题模板
+更换主题H">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xcode7  中创建静态库">
-<meta property="og:url" content="http://yoursite.com/2016/01/12/Xcode7-0-静态库的制作/index.html">
+<meta property="og:title" content="(MAC)利用gitpage和Hexo创建独立博客(详细教程三)">
+<meta property="og:url" content="http://yoursite.com/2014/02/27/创建blog-3/index.html">
 <meta property="og:site_name" content="Jared">
-<meta property="og:description" content="一、静态库和动态库的区别：静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。
-二、静态库简介：1、静态库分为真">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c04e18b7jw1ezwzpznrvaj211p0lqdj9.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c04e18b7jw1ezwzqduw9qj212w0q6jwg.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxtx9zcj1j20hb03nwfa.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c04e18b7gw1ezxtxf7antj20he027wex.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c04e18b7gw1ezxtzpkpg7j20l70bqq4d.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxu9huq5cj20g404h402.jpg">
-<meta property="og:updated_time" content="2016-01-13T06:23:12.000Z">
+<meta property="og:description" content="本期来介绍一下博客主题的修改和关联域名
+配置博主信息在Hexo根目录下面有一个文件:_config.yml,这是Hexo的配置文件.关于生成的网站的主体信息都是在这里进行的设置.主要有下面的几个属性.
+title: 博客网站的标题
+subtitle: 子标题
+description: 描述
+author: 作者名字
+还有一个就是靠近最底下的一个属性
+theme: 设置生成样式的主题模板
+更换主题H">
+<meta property="og:updated_time" content="2016-01-22T11:36:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xcode7  中创建静态库">
-<meta name="twitter:description" content="一、静态库和动态库的区别：静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。
-二、静态库简介：1、静态库分为真">
+<meta name="twitter:title" content="(MAC)利用gitpage和Hexo创建独立博客(详细教程三)">
+<meta name="twitter:description" content="本期来介绍一下博客主题的修改和关联域名
+配置博主信息在Hexo根目录下面有一个文件:_config.yml,这是Hexo的配置文件.关于生成的网站的主体信息都是在这里进行的设置.主要有下面的几个属性.
+title: 博客网站的标题
+subtitle: 子标题
+description: 描述
+author: 作者名字
+还有一个就是靠近最底下的一个属性
+theme: 设置生成样式的主题模板
+更换主题H">
 
 
 
@@ -83,7 +96,7 @@
   };
 </script>
 
-  <title> Xcode7  中创建静态库 | Jared </title>
+  <title> (MAC)利用gitpage和Hexo创建独立博客(详细教程三) | Jared </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -193,7 +206,7 @@
             
             
               
-                Xcode7  中创建静态库
+                (MAC)利用gitpage和Hexo创建独立博客(详细教程三)
               
             
           </h1>
@@ -202,8 +215,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-12T20:01:43+08:00" content="2016-01-12">
-              2016-01-12
+            <time itemprop="dateCreated" datetime="2014-02-27T10:03:27+08:00" content="2014-02-27">
+              2014-02-27
             </time>
           </span>
 
@@ -213,8 +226,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/12/Xcode7-0-静态库的制作/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/Xcode7-0-静态库的制作/" itemprop="commentsCount"></span>
+                <a href="/2014/02/27/创建blog-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/02/27/创建blog-3/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -233,34 +246,27 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u4E00_u3001_u9759_u6001_u5E93_u548C_u52A8_u6001_u5E93_u7684_u533A_u522B_uFF1A"><a href="#u4E00_u3001_u9759_u6001_u5E93_u548C_u52A8_u6001_u5E93_u7684_u533A_u522B_uFF1A" class="headerlink" title="一、静态库和动态库的区别："></a>一、静态库和动态库的区别：</h3><p>静态库和动态库是相对编译期和运行期的，静态库以 .a 和 .framework 形式存在，链接时，静态库会被完整地复制到可执行文件中，被多次使用就有多份冗余拷贝；动态库以 .dylib 和 .framework 形式存在，链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存，一般只能由系统创建。</p>
-<h3 id="u4E8C_u3001_u9759_u6001_u5E93_u7B80_u4ECB_uFF1A"><a href="#u4E8C_u3001_u9759_u6001_u5E93_u7B80_u4ECB_uFF1A" class="headerlink" title="二、静态库简介："></a>二、静态库简介：</h3><p>1、静态库分为真机—Debug（调试）版本、真机—Release（发布）版本、模拟器—Debug版本、模拟器—Release版本；开发中一般都打包Release（发布）版本，将真机和模拟器版本合并，提供外界。</p>
-<p>2、使用场景：在项目开发的过程中，例如两个公司之间业务交流，不可能把源代码都发送给另一个公司，这时候将私密内容打包成静态库，别人只能调用接口，而不能知道其中实现的细节。</p>
-<h3 id="u4E09_u3001_u7528Xcode7_u521B_u5EFA_u9759_u6001_u5E93"><a href="#u4E09_u3001_u7528Xcode7_u521B_u5EFA_u9759_u6001_u5E93" class="headerlink" title="三、用Xcode7创建静态库"></a>三、用Xcode7创建静态库</h3><p>.a文件版本（以制作AFNetworking静态库为例）</p>
-<p>1、新建项目，点击iOS—Framework&amp;—Cocoa Touch Static Library。<br><img src="http://ww1.sinaimg.cn/mw690/c04e18b7jw1ezwzpznrvaj211p0lqdj9.jpg"></p>
-<p>给你的工程命名为StaticLib</p>
-<p>2、系统自动生成以工程名命名的.h和.m文件，可自定义的在目录下添加或删除文件，注意目录下Products文件夹有一个.a文件为红色，说明文件并不存在。这里我们将系统生成的.h和.m文件删除。</p>
-<p>将要创建静态库的所有文件导入工程目录下</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg"></p>
-<p>3、点击Build Phases—Copy Files，左下角点击+号按钮，添加你需要暴露的接口头文件。如果你在静态库工程中使用了category，那么你可能会碰到链接问题，解决的办法就是需要同时在生成静态库的工程和使用静态库的工程中使用“-all_load”编译选项，即在对应target的”Build Settings”中的“Other Linker Flags”选项添加“-all_load”，注意：使用静态库的工程中是一定要加该编译选项的！至于生成静态库的工程中加不加没有试过，不过建议还是加上该编译选项。</p>
-<p>点击Add添加</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7jw1ezwzvhx3p3j20uv0ox76t.jpg"></p>
-<p>4、然后点击左上角，选择Edit Scheme，Build Configuration下选择Release，先注意检查下面Release是否为NO：Yes表示只编译选中模拟器设备对应的架构，No则为编译所有模拟器设备支持的cup架构（Debug版本同理）,选择NO，然后分别在模拟器和真机下Command+B编译一下，会看到Products文件夹下的.a文件变为黑色，这个.a文件就是我们想要得到的静态库，这里会出现一个问题你先编译的模拟器会发现.a依然是红色，你需要模拟器和真机都编译后.a才会变成黑色，这应该是Xcode本身的问题。</p>
-<p><img src="http://ww4.sinaimg.cn/mw690/c04e18b7jw1ezwzqduw9qj212w0q6jwg.jpg"></p>
-<p>注：关于静态库对CPU架构的支持，首先了解iOS设备CPU架构方面的知识，ARM是微处理器行业的一家知名企业，arm处理器以体积小和高性能的优势在嵌入式设备中广泛使用，几乎所有手机都是使用它的。</p>
-<p>模拟器：iphone4s~5 : i386 iphone5s~6plus : x86_64</p>
-<p>真机：iphone3gs~4s : armv7  iphone5~5c : armv7s （静态库只要支持了armv7，就可以跑在armv7s的架构上） iphone5s~6plus : arm64</p>
-<p>armv6, armv7, armv7s是ARM CPU的不同指令集，原则是向下兼容的。例如iPhone4S CPU支持armv7, 但它同时兼容armv6，只是使用armv6指令可能无法充分发挥它的特性。</p>
-<p>这里再补充一下查看静态库.a对处理器架构的支持，先cd到.a文件的路径下，命令行输入：lipo -info xxxxx.a</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxtx9zcj1j20hb03nwfa.jpg"></p>
-<p>5、通过终端打开路径/Users/shelin/Library/Developer/Xcode/DerivedData/，选择对应的工程文件夹。</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/c04e18b7gw1ezxtxf7antj20he027wex.jpg"></p>
-<p>打开Build—Products文件夹，会看到Release-iphoneos和Release-iphonesimulator文件夹，分别是真机和模拟器的.a文件，为了使用方便我们将两个版本的.a文件合并。</p>
-<p><img src="http://ww4.sinaimg.cn/mw690/c04e18b7gw1ezxtzpkpg7j20l70bqq4d.jpg"></p>
-<p>6、合并真机和模拟器.a文件，在终端输入以下命令行：lipo -create  模拟器.a文件的路径 真机.a文件的路径 -output 合并后的保存路径（例：lipo -create /Users/lanou3g/Library/Developer/Xcode/DerivedData/StaticLib-bclobqjuiutnrobrjacafgddptem/Build/Products/Release-iphoneos/libStaticLib.a  /Users/lanou3g/Library/Developer/Xcode/DerivedData/StaticLib-bclobqjuiutnrobrjacafgddptem/Build/Products/Release-iphonesimulator/libStaticLib.a  -output /Users/lanou3g/Desktop/StaticLib.a）最终会在桌面得到一个合并后的StaticLib.a文件，再将暴露出来的.h头文件一起复制出来。</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7gw1ezxu9huq5cj20g404h402.jpg"></p>
-<p>7、使用：只需将.a和暴露出来的.h头文件导入工程目录下就可供外界使用。</p>
-<p>8、.framework待研究。</p>
+        <span itemprop="articleBody"><p>本期来介绍一下博客主题的修改和关联域名</p>
+<h3 id="u914D_u7F6E_u535A_u4E3B_u4FE1_u606F"><a href="#u914D_u7F6E_u535A_u4E3B_u4FE1_u606F" class="headerlink" title="配置博主信息"></a>配置博主信息</h3><p>在Hexo根目录下面有一个文件:_config.yml,这是Hexo的配置文件.关于生成的网站的主体信息都是在这里进行的设置.主要有下面的几个属性.</p>
+<p>title: 博客网站的标题</p>
+<p>subtitle: 子标题</p>
+<p>description: 描述</p>
+<p>author: 作者名字</p>
+<p>还有一个就是靠近最底下的一个属性</p>
+<p>theme: 设置生成样式的主题模板</p>
+<h3 id="u66F4_u6362_u4E3B_u9898"><a href="#u66F4_u6362_u4E3B_u9898" class="headerlink" title="更换主题"></a>更换主题</h3><p>Hexo中所有的网站样式文件都是根据”主题”生成的,默认的是LandSpace主题,主题是一个外太空的图片,有些难看.想要一个自己独特风格的网站可以更换一个自己喜欢的主题.这个主题也是别人造好轮子的,网上比较多,我给大家推荐知乎上的一个问答,提问加回答基本罗列了所有的样式,传送门在下面.或者自行百度”Hexo 主题”,第一个选项就是.</p>
+<h3 id="u77E5_u4E4E_u4F20_u9001_u95E8"><a href="#u77E5_u4E4E_u4F20_u9001_u95E8" class="headerlink" title="知乎传送门"></a>知乎传送门</h3><p>选择自己中意的主题模板下载下来之后,放在Hexo根目录下的themes目录下放好.然后再到Hexo根目录下的_config.yml文件,找到theme属性,将刚才下载的文件夹的名字写在后面.</p>
+<p>这里要注意一下,如果名字和 冒号之间没有空格,Hexo开启服务是回失败的,因为Hexo默认的是冒号后面必须加空格.</p>
+<h3 id="u5173_u8054_u57DF_u540D"><a href="#u5173_u8054_u57DF_u540D" class="headerlink" title="关联域名"></a>关联域名</h3><p>到目前为止,虽然看起来整体上还过得去,但是还是有一个问题,就是访问的时候需要输入[用户名].github.io,这样看起来比较怪异.其实GitPage是支持关联域名的,就像这个博客,就是关联一个域名,这样大家就可以直接输入网址来访问我的博客了.</p>
+<p>想要关联首先要拥有一个域名,推荐去万网上购买,想购买什么样的域名,就随大家的意了,只是注意:不要购买带汉字的域名.我这里购买的就是www.coderqi.com</p>
+<p>接着就是给这个域名实名认证.这个按照万网的要求申请就是了,很快就会通过.</p>
+<p>下一步就是给这个域名添加解析记录.添加一个CNAME类型的,记录值就是[用户名].github.io,剩下的参数按照默认的即可.<br>还有一步:在github对应的那个仓库中添加一个文件:CNAME文件.没有后缀名,名字就是CNAME.</p>
+<p>CNAME文件的内容就是之前注册的那个域名</p>
+<h3 id="u663E_u793A_u56FE_u7247"><a href="#u663E_u793A_u56FE_u7247" class="headerlink" title="显示图片"></a>显示图片</h3><p>博客当中难免会需要显示图片.这个时候该怎么办呢?如果使用百度云,360等网盘来存储图片,会发现第二天图片就失效了.</p>
+<p>这里我给大家推荐一个插件,叫微博图床,他可以将我们的图片存放到新浪微博的网络空间上,并提供一个稳定的不变的图片Url.</p>
+<p>下载下来之后安装,发现在浏览器的地址栏旁边多了一个小框,点开之后提示拖动一个图片到图框上.然后,登陆自己的新浪微博,将要用到的图片拖到图床上,会显示一个URL,这个就是我们图片的公网地址.</p>
+<p>Hexo的.md文件是支持HTML语言的,我们可以直接利用img标签显示图片了</p>
+<h3 id="u4E00_u5207_u51C6_u5907ok"><a href="#u4E00_u5207_u51C6_u5907ok" class="headerlink" title="一切准备ok"></a>一切准备ok</h3><p>OK ,到这里,在浏览器里直接输入你的域名就可以访问你的博客了.惊喜马上就回呈现。</p>
 </span>
       
     </div>
@@ -272,13 +278,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/02/19/iOS-系统自带地图-定位功能/" rel="next" title="iOS开发-系统自带地图,定位功能">
-                <i class="fa fa-chevron-left"></i> iOS开发-系统自带地图,定位功能
+              <a href="/2014/02/25/创建blog-2/" rel="next" title="(MAC)利用gitpage和Hexo创建独立博客(详细教程二)">
+                <i class="fa fa-chevron-left"></i> (MAC)利用gitpage和Hexo创建独立博客(详细教程二)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/03/02/创建blog-4-修改主题/" rel="prev" title="(MAC)利用gitpage和Hexo创建独立博客(详细教程四)">
+                (MAC)利用gitpage和Hexo创建独立博客(详细教程四) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -293,10 +303,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/12/Xcode7-0-静态库的制作/"
-     data-title="Xcode7  中创建静态库"
+        <div class="ds-share flat" data-thread-key="2014/02/27/创建blog-3/"
+     data-title="(MAC)利用gitpage和Hexo创建独立博客(详细教程三)"
      data-content=""
-     data-url="http://yoursite.com/2016/01/12/Xcode7-0-静态库的制作/">
+     data-url="http://yoursite.com/2014/02/27/创建blog-3/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -327,8 +337,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/12/Xcode7-0-静态库的制作/"
-           data-title="Xcode7  中创建静态库" data-url="http://yoursite.com/2016/01/12/Xcode7-0-静态库的制作/">
+      <div class="ds-thread" data-thread-key="2014/02/27/创建blog-3/"
+           data-title="(MAC)利用gitpage和Hexo创建独立博客(详细教程三)" data-url="http://yoursite.com/2014/02/27/创建blog-3/">
       </div>
     
   </div>
@@ -436,7 +446,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00_u3001_u9759_u6001_u5E93_u548C_u52A8_u6001_u5E93_u7684_u533A_u522B_uFF1A"><span class="nav-number">1.</span> <span class="nav-text">一、静态库和动态库的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C_u3001_u9759_u6001_u5E93_u7B80_u4ECB_uFF1A"><span class="nav-number">2.</span> <span class="nav-text">二、静态库简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E09_u3001_u7528Xcode7_u521B_u5EFA_u9759_u6001_u5E93"><span class="nav-number">3.</span> <span class="nav-text">三、用Xcode7创建静态库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u914D_u7F6E_u535A_u4E3B_u4FE1_u606F"><span class="nav-number">1.</span> <span class="nav-text">配置博主信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u66F4_u6362_u4E3B_u9898"><span class="nav-number">2.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u77E5_u4E4E_u4F20_u9001_u95E8"><span class="nav-number">3.</span> <span class="nav-text">知乎传送门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5173_u8054_u57DF_u540D"><span class="nav-number">4.</span> <span class="nav-text">关联域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u663E_u793A_u56FE_u7247"><span class="nav-number">5.</span> <span class="nav-text">显示图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00_u5207_u51C6_u5907ok"><span class="nav-number">6.</span> <span class="nav-text">一切准备ok</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
