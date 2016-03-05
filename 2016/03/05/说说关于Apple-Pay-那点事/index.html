@@ -1,0 +1,686 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="关于Apple Pay
+其实 Pay在”iOS8.1就已经有这个功能了，只是当时在天朝还没有那么的火，当时舆论很多，有所苹果要和阿里的支付宝合作，也有说可能要和中国银联合作，然而现在苹果和中国银联达成合作伙伴，已经入住本土，现在的趋势是要火的节奏，因此很多电商平台B2B,P2P,C2C,X2X都有可能需要这个屌丝的付款功能了，在此简单的研究一下。”
+
+Apple Pay的代码实现
+1.在我们大天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说关于Apple Pay 那点事">
+<meta property="og:url" content="http://yoursite.com/2016/03/05/说说关于Apple-Pay-那点事/index.html">
+<meta property="og:site_name" content="Jared">
+<meta property="og:description" content="关于Apple Pay
+其实 Pay在”iOS8.1就已经有这个功能了，只是当时在天朝还没有那么的火，当时舆论很多，有所苹果要和阿里的支付宝合作，也有说可能要和中国银联合作，然而现在苹果和中国银联达成合作伙伴，已经入住本土，现在的趋势是要火的节奏，因此很多电商平台B2B,P2P,C2C,X2X都有可能需要这个屌丝的付款功能了，在此简单的研究一下。”
+
+Apple Pay的代码实现
+1.在我们大天">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c04e18b7gw1f1m5pi2dlaj213u0mete2.jpg">
+<meta property="og:updated_time" content="2016-03-05T11:32:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="说说关于Apple Pay 那点事">
+<meta name="twitter:description" content="关于Apple Pay
+其实 Pay在”iOS8.1就已经有这个功能了，只是当时在天朝还没有那么的火，当时舆论很多，有所苹果要和阿里的支付宝合作，也有说可能要和中国银联合作，然而现在苹果和中国银联达成合作伙伴，已经入住本土，现在的趋势是要火的节奏，因此很多电商平台B2B,P2P,C2C,X2X都有可能需要这个屌丝的付款功能了，在此简单的研究一下。”
+
+Apple Pay的代码实现
+1.在我们大天">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always',
+    motion: true
+  };
+</script>
+
+  <title> 说说关于Apple Pay 那点事 | Jared </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jared</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                说说关于Apple Pay 那点事
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-05T13:24:31+08:00" content="2016-03-05">
+              2016-03-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/05/说说关于Apple-Pay-那点事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/05/说说关于Apple-Pay-那点事/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h4 id="u5173_u4E8EApple_Pay"><a href="#u5173_u4E8EApple_Pay" class="headerlink" title="关于Apple Pay"></a>关于Apple Pay</h4><ul>
+<li>其实 Pay在”iOS8.1就已经有这个功能了，只是当时在天朝还没有那么的火，当时舆论很多，有所苹果要和阿里的支付宝合作，也有说可能要和中国银联合作，然而现在苹果和中国银联达成合作伙伴，已经入住本土，现在的趋势是要火的节奏，因此很多电商平台B2B,P2P,C2C,X2X都有可能需要这个屌丝的付款功能了，在此简单的研究一下。”</li>
+</ul>
+<h4 id="Apple_Pay_u7684_u4EE3_u7801_u5B9E_u73B0"><a href="#Apple_Pay_u7684_u4EE3_u7801_u5B9E_u73B0" class="headerlink" title="Apple Pay的代码实现"></a>Apple Pay的代码实现</h4><ul>
+<li>1.在我们大天朝，需要9.2以上且需要iPhone6以上了，然后在项目Capabilities里将Apple Pay设置为on，这将自动导入需要的库文件，然后添加一个权限文件并设置，这里，需要你修改或创建你的App ID。</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/mw690/c04e18b7gw1f1m5pi2dlaj213u0mete2.jpg"></p>
+<ul>
+<li>2.在创建完上一步的时候，你可能会注意到上面没有有效的Merchant ID，我们需要创建一个，访问苹果iOS 开发者中心的位于Identifiers &gt; Merchant ID的页面。然后随着流程指引，创建一个Merchant ID并注册它。这个和其他证书差不多再此不做过多的阐述.</li>
+<li>3.下面我们直接上代码:</li>
+</ul>
+<p>ViewController.里面的代码:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ViewController.m</span></span><br><span class="line"><span class="comment">//  Jared_ApplePay</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Jared on 16/3/5.</span></span><br><span class="line"><span class="comment">//  Copyright © 2016年 Jared. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">"ViewController.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;PassKit/PassKit.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()&lt;<span class="title">PKPaymentAuthorizationViewControllerDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)loadView&#123;</span><br><span class="line">    [<span class="keyword">super</span> loadView];</span><br><span class="line">    <span class="keyword">self</span><span class="variable">.view</span> = [[<span class="built_in">UIView</span> alloc] initWithFrame:[<span class="built_in">UIScreen</span> mainScreen]<span class="variable">.bounds</span>];</span><br><span class="line">    <span class="keyword">self</span><span class="variable">.view</span><span class="variable">.backgroundColor</span> = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="built_in">UIButton</span> *btn = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    btn<span class="variable">.frame</span> = <span class="built_in">CGRectMake</span>(<span class="number">60</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">50</span>);</span><br><span class="line">    btn<span class="variable">.center</span> = <span class="keyword">self</span><span class="variable">.view</span><span class="variable">.center</span>;</span><br><span class="line">    [btn setBackgroundImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"ApplePayBTN_64pt__whiteLine_textLogo_"</span>] forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line"><span class="comment">//    [btn setTitle:@"支付" forState:(UIControlStateSelected)];</span></span><br><span class="line">    </span><br><span class="line">    [btn addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(ApplePay) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.view</span> addSubview:btn];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark ----支付状态</span></span><br><span class="line">- (<span class="keyword">void</span>)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment completion:(<span class="keyword">void</span> (^)(PKPaymentAuthorizationStatus status))completion&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Payment was authorized: %@"</span>, payment);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">BOOL</span> asyncSuccessful = <span class="literal">FALSE</span>;</span><br><span class="line">    <span class="keyword">if</span>(asyncSuccessful) &#123;</span><br><span class="line">        completion(PKPaymentAuthorizationStatusSuccess);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// do something to let the user know the status</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"支付成功"</span>);</span><br><span class="line">        </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        completion(PKPaymentAuthorizationStatusFailure);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// do something to let the user know the status</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"支付失败"</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="preprocessor">#pragma mark ----开始支付</span></span><br><span class="line">- (<span class="keyword">void</span>)ApplePay&#123;</span><br><span class="line">    <span class="keyword">if</span>([PKPaymentAuthorizationViewController canMakePayments]) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"支持支付"</span>);</span><br><span class="line">        </span><br><span class="line">        PKPaymentRequest *request = [[PKPaymentRequest alloc] init];</span><br><span class="line">        </span><br><span class="line">        PKPaymentSummaryItem *item1 = [PKPaymentSummaryItem summaryItemWithLabel:<span class="string">@"瓜子"</span>amount:[<span class="built_in">NSDecimalNumber</span> decimalNumberWithString:<span class="string">@"0.99"</span>]];</span><br><span class="line">        </span><br><span class="line">        PKPaymentSummaryItem *item2 = [PKPaymentSummaryItem summaryItemWithLabel:<span class="string">@"土豆"</span>amount:[<span class="built_in">NSDecimalNumber</span> decimalNumberWithString:<span class="string">@"1.00"</span>]];</span><br><span class="line">        </span><br><span class="line">        PKPaymentSummaryItem *item3 = [PKPaymentSummaryItem summaryItemWithLabel:<span class="string">@"西瓜"</span>amount:[<span class="built_in">NSDecimalNumber</span> decimalNumberWithString:<span class="string">@"2.00"</span>]];</span><br><span class="line">        </span><br><span class="line">        PKPaymentSummaryItem *item4 = [PKPaymentSummaryItem summaryItemWithLabel:<span class="string">@"总金额"</span> amount:[<span class="built_in">NSDecimalNumber</span> decimalNumberWithString:<span class="string">@"3.99"</span>] type:PKPaymentSummaryItemTypeFinal];</span><br><span class="line">        </span><br><span class="line">        request<span class="variable">.paymentSummaryItems</span> = @[item1, item2, item3, item4];</span><br><span class="line">        </span><br><span class="line">        request<span class="variable">.countryCode</span> = <span class="string">@"CN"</span>;</span><br><span class="line">        request<span class="variable">.currencyCode</span> = <span class="string">@"CNY"</span>;</span><br><span class="line">        <span class="comment">//此属性限制支付卡，可以支付。PKPaymentNetworkChinaUnionPay支持中国的卡 9.2增加的</span></span><br><span class="line">        request<span class="variable">.supportedNetworks</span> = @[PKPaymentNetworkChinaUnionPay, PKPaymentNetworkMasterCard, PKPaymentNetworkVisa];</span><br><span class="line">        request<span class="variable">.merchantIdentifier</span> = <span class="string">@"Jared.com.cn.ApplePayDome"</span>;</span><br><span class="line">        <span class="comment">/*</span><br><span class="line">         PKMerchantCapabilityCredit NS_ENUM_AVAILABLE_IOS(9_0)   = 1UL &lt;&lt; 2,   // 支持信用卡</span><br><span class="line">         PKMerchantCapabilityDebit  NS_ENUM_AVAILABLE_IOS(9_0)   = 1UL &lt;&lt; 3    // 支持借记卡</span><br><span class="line">         */</span></span><br><span class="line">        request<span class="variable">.merchantCapabilities</span> = PKMerchantCapabilityCredit;</span><br><span class="line">        <span class="comment">//增加邮箱及地址信息</span></span><br><span class="line">        request<span class="variable">.requiredBillingAddressFields</span> = PKAddressFieldEmail | PKAddressFieldPostalAddress;</span><br><span class="line">        PKPaymentAuthorizationViewController *paymentPane = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:request];</span><br><span class="line">        paymentPane<span class="variable">.delegate</span> = <span class="keyword">self</span>;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (!paymentPane) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"支付出现问题"</span>);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        [<span class="keyword">self</span> presentViewController:paymentPane animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"该设备不支持支付"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark ----支付完成</span></span><br><span class="line">- (<span class="keyword">void</span>)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    [controller dismissViewControllerAnimated:<span class="literal">TRUE</span> completion:<span class="literal">nil</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="u6A21_u62DF_u5668_u548C_u771F_u673A_u662F_u6709_u533A_u522B_u7684_2C_u6D4B_u8BD5_u7684_u65F6_u5019_u6700_u597D_u662F_u7528_u771F_u673A_u6D4B_u8BD5-_u6BD4_u5982_u6307_u7EB9_u652F_u4ED8_u5728_u6A21_u62DF_u5668_u4E0A_u5C31_u6CA1_u6709_2C_u53EA_u80FD_u7528_u771F_u673A_u6D4B_u8BD5"><a href="#u6A21_u62DF_u5668_u548C_u771F_u673A_u662F_u6709_u533A_u522B_u7684_2C_u6D4B_u8BD5_u7684_u65F6_u5019_u6700_u597D_u662F_u7528_u771F_u673A_u6D4B_u8BD5-_u6BD4_u5982_u6307_u7EB9_u652F_u4ED8_u5728_u6A21_u62DF_u5668_u4E0A_u5C31_u6CA1_u6709_2C_u53EA_u80FD_u7528_u771F_u673A_u6D4B_u8BD5" class="headerlink" title="模拟器和真机是有区别的,测试的时候最好是用真机测试.比如指纹支付在模拟器上就没有,只能用真机测试."></a>模拟器和真机是有区别的,测试的时候最好是用真机测试.比如指纹支付在模拟器上就没有,只能用真机测试.</h4></li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/12/Xcode7-0-静态库的制作/" rel="next" title="Xcode7  中创建静态库">
+                <i class="fa fa-chevron-left"></i> Xcode7  中创建静态库
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/05/说说关于Apple-Pay-那点事/"
+     data-title="说说关于Apple Pay 那点事"
+     data-content=""
+     data-url="http://yoursite.com/2016/03/05/说说关于Apple-Pay-那点事/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/05/说说关于Apple-Pay-那点事/"
+           data-title="说说关于Apple Pay 那点事" data-url="http://yoursite.com/2016/03/05/说说关于Apple-Pay-那点事/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://tp4.sinaimg.cn/3226343607/180/5747450100/1" alt="Jared" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Jared</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">大家好，我是管现文，英文名Jared。欢迎来到我的的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">标签</span>
+              
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/bhuiyi1314" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5173_u4E8EApple_Pay"><span class="nav-number">1.</span> <span class="nav-text">关于Apple Pay</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Apple_Pay_u7684_u4EE3_u7801_u5B9E_u73B0"><span class="nav-number">2.</span> <span class="nav-text">Apple Pay的代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6A21_u62DF_u5668_u548C_u771F_u673A_u662F_u6709_u533A_u522B_u7684_2C_u6D4B_u8BD5_u7684_u65F6_u5019_u6700_u597D_u662F_u7528_u771F_u673A_u6D4B_u8BD5-_u6BD4_u5982_u6307_u7EB9_u652F_u4ED8_u5728_u6A21_u62DF_u5668_u4E0A_u5C31_u6CA1_u6709_2C_u53EA_u80FD_u7528_u771F_u673A_u6D4B_u8BD5"><span class="nav-number">3.</span> <span class="nav-text">模拟器和真机是有区别的,测试的时候最好是用真机测试.比如指纹支付在模拟器上就没有,只能用真机测试.</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jared</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jared1016"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
