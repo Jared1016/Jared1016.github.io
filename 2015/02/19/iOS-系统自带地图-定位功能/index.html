@@ -1,0 +1,769 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="概览
+现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。不言而谕，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边；类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发-系统自带地图,定位功能">
+<meta property="og:url" content="http://yoursite.com/2015/02/19/iOS-系统自带地图-定位功能/index.html">
+<meta property="og:site_name" content="Jared">
+<meta property="og:description" content="概览
+现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。不言而谕，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边；类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一">
+<meta property="og:updated_time" content="2016-01-22T11:46:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发-系统自带地图,定位功能">
+<meta name="twitter:description" content="概览
+现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。不言而谕，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边；类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always',
+    motion: true
+  };
+</script>
+
+  <title> iOS开发-系统自带地图,定位功能 | Jared </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jared</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Jared</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS开发-系统自带地图,定位功能
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-02-19T19:39:26+08:00" content="2015-02-19">
+              2015-02-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/02/19/iOS-系统自带地图-定位功能/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/19/iOS-系统自带地图-定位功能/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="u6982_u89C8"><a href="#u6982_u89C8" class="headerlink" title="概览"></a>概览</h3><blockquote>
+<p>现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。不言而谕，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边；类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一下iOS中如何进行地图和定位开发。</p>
+</blockquote>
+<h3 id="u5B9A_u4F4D"><a href="#u5B9A_u4F4D" class="headerlink" title="定位"></a>定位</h3><blockquote>
+<p>要实现地图、导航功能，首先要熟悉定位功能，在iOS中通过地图开发框架MapKit进行定位操作，</p>
+</blockquote>
+<ul>
+<li><h5 id="u5B9A_u4F4D_u529F_u80FD"><a href="#u5B9A_u4F4D_u529F_u80FD" class="headerlink" title="定位功能"></a>定位功能</h5></li>
+</ul>
+<blockquote>
+<p>定位是一个很常用的功能，如一些地图软件打开之后如果用户允许软件定位的话，那么打开软件后就会自动锁定到当前位置，如果用户手机移动那么当前位置也会跟随着变化。要实现这个功能需要使用Core Loaction中CLLocationManager类, 首先看一下这个类的一些主要方法和属性：</p>
+</blockquote>
+<p>1.常用的有两个类方法:</p>
+<blockquote>
+<p>(1) +(BOOL)locationServicesEnabled;<br>是否启用定位服务，通常如果用户没有启用定位服务可以提示用户打开定位服务</p>
+<p>(2) +(CLAuthorizationStatus)authorizationStatus;</p>
+<p>定位服务授权状态，返回枚举类型：<br>kCLAuthorizationStatusNotDetermined： 用户尚未做出决定是否启用定位服务<br>kCLAuthorizationStatusRestricted： 没有获得用户授权使用定位服务,可能用户没有自己禁止访问授权<br>kCLAuthorizationStatusDenied ：用户已经明确禁止应用使用定位服务或者当前系统定位服务处于关闭状态<br>kCLAuthorizationStatusAuthorizedAlways： 应用获得授权可以一直使用定位服务，即使应用不在使用状态<br>kCLAuthorizationStatusAuthorizedWhenInUse： 使用此应用过程中允许访问定位服务</p>
+</blockquote>
+<p>2.定位精确度的属性</p>
+<p>(1) desiredAccuracy 定位精确度，枚举类型：</p>
+<blockquote>
+<p>kCLLocationAccuracyBest：最精确定位<br>CLLocationAccuracy kCLLocationAccuracyNearestTenMeters：十米误差范围<br>kCLLocationAccuracyHundredMeters:百米误差范围<br>kCLLocationAccuracyKilometer:千米误差范围<br>kCLLocationAccuracyThreeKilometers:三千米误差范围</p>
+</blockquote>
+<p>(2) distanceFilter</p>
+<blockquote>
+<p>位置信息更新最小距离，只有移动大于这个距离才更新位置信息，默认为kCLDistanceFilterNone：不进行距离限制</p>
+</blockquote>
+<p>3.常用的对象方法</p>
+<p>(1) startUpdatingLocation</p>
+<blockquote>
+<pre><code>开始定位追踪，开始定位后将按照用户设置的更新频率执行-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;方法反馈定位信息
+</code></pre></blockquote>
+<p>(2) stopUpdatingLocation</p>
+<blockquote>
+<p>停止定位追踪</p>
+</blockquote>
+<p>(3) startUpdatingHeading</p>
+<blockquote>
+<p>开始导航方向追踪</p>
+</blockquote>
+<p>(4) stopUpdatingHeading</p>
+<blockquote>
+<p>停止导航方向追踪</p>
+</blockquote>
+<p>(5) startMonitoringForRegion:</p>
+<blockquote>
+<pre><code>开始对某个区域进行定位追踪，开始对某个区域进行定位后。如果用户进入或者走出某个区域会调用- (void)locationManager:(CLLocationManager *)manager
+didEnterRegion:(CLRegion *)region和- (void)locationManager:(CLLocationManager *)manager
+didExitRegion:(CLRegion *)region代理方法反馈相关信息
+</code></pre></blockquote>
+<p>(6) stopMonitoringForRegion:</p>
+<blockquote>
+<p>停止对某个区域进行定位追踪</p>
+</blockquote>
+<p>(7) requestWhenInUseAuthorization</p>
+<blockquote>
+<p>请求获得应用使用时的定位服务授权，注意使用此方法前在要在info.plist中配置NSLocationWhenInUseUsageDescription</p>
+</blockquote>
+<p>(8) requestAlwaysAuthorization</p>
+<blockquote>
+<p>请求获得应用一直使用定位服务授权，注意使用此方法前要在info.plist中配置NSLocationAlwaysUsageDescription</p>
+</blockquote>
+<p>4.常用的代理方法</p>
+<p>(1) -(void)locationManager:(CLLocationManager <em>)manager didUpdateLocations:(NSArray </em>)locations;</p>
+<blockquote>
+<p>位置发生改变后执行（第一次定位到某个位置之后也会执行）</p>
+</blockquote>
+<p>(2) - (void)locationManager:(CLLocationManager <em>)manager<br>       didUpdateHeading:(CLHeading </em>)newHeading;</p>
+<blockquote>
+<p>导航方向发生变化后执行</p>
+</blockquote>
+<p>(3) - (void)locationManager:(CLLocationManager <em>)manager<br>    didEnterRegion:(CLRegion </em>)region</p>
+<blockquote>
+<p>进入某个区域之后执行</p>
+</blockquote>
+<p>(4) - (void)locationManager:(CLLocationManager <em>)manager<br>    didExitRegion:(CLRegion </em>)region</p>
+<blockquote>
+<p>走出某个区域之后执行</p>
+</blockquote>
+<ul>
+<li>iOS8之后的情况<blockquote>
+<p>iOS 8 还提供了更加人性化的定位服务选项。App 的定位服务不再仅仅是关闭或打开，现在，定位服务的启用提供了三个选项，「永不」「使用应用程序期间」和「始终」。同时，考虑到能耗问题，如果一款 App 要求始终能在后台开启定位服务，iOS 8 不仅会在首次打开 App 时主动向你询问，还会在日常使用中弹窗提醒你该 App 一直在后台使用定位服务，并询问你是否继续允许。在iOS7及以前的版本，如果在应用程序中使用定位服务只要在程序中调用startUpdatingLocation方法应用就会询问用户是否允许此应用是否允许使用定位服务，同时在提示过程中可以通过在info.plist中配置通过配置Privacy - Location Usage Description告诉用户使用的目的，同时这个配置是可选的。<br>但是在iOS8中配置配置项发生了变化，可以通过配置NSLocationAlwaysUsageDescription或者NSLocationWhenInUseUsageDescription来告诉用户使用定位服务的目的，并且注意这个配置是必须的，如果不进行配置则默认情况下应用无法使用定位服务，打开应用不会给出打开定位服务的提示，除非安装后自己设置此应用的定位服务。同时，在应用程序中需要根据配置对requestAlwaysAuthorization或locationServicesEnabled方法进行请求。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="u76F8_u5173_u4EE3_u7801"><a href="#u76F8_u5173_u4EE3_u7801" class="headerlink" title="相关代码"></a>相关代码</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ViewController.m</span></span><br><span class="line"><span class="comment">//  Jared_Map</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Jared on 15/2/19.</span></span><br><span class="line"><span class="comment">//  Copyright © 2015年 管现文. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">"ViewController.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;MapKit/MapKit.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"MyAnnotation.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()&lt;<span class="title">MKMapViewDelegate</span>,<span class="title">CLLocationManagerDelegate</span>&gt;</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span> ,<span class="keyword">strong</span>)<span class="built_in">MKMapView</span> *mapView;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span> ,<span class="keyword">strong</span>)CLLocationManager *manager;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建地图并加载当前视图</span></span><br><span class="line">    _mapView = [[<span class="built_in">MKMapView</span> alloc] initWithFrame:<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.frame</span>];</span><br><span class="line">    <span class="comment">//设置可以显示用户的位置</span></span><br><span class="line">    _mapView<span class="variable">.showsUserLocation</span> = <span class="literal">YES</span>;</span><br><span class="line">    <span class="comment">// 设置用户跟随模式</span></span><br><span class="line">    [_mapView setUserTrackingMode:(<span class="built_in">MKUserTrackingModeFollow</span>) animated:<span class="literal">YES</span>];</span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.view</span> addSubview:_mapView];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 设置代理</span></span><br><span class="line">    _mapView<span class="variable">.delegate</span> = <span class="keyword">self</span>;</span><br><span class="line">    _manager<span class="variable">.delegate</span> = <span class="keyword">self</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建定位类</span></span><br><span class="line">    _manager = [[CLLocationManager alloc] init];</span><br><span class="line">    <span class="comment">// 定位的距离</span></span><br><span class="line">    _manager<span class="variable">.distanceFilter</span> = <span class="number">100.</span>f;</span><br><span class="line">    <span class="comment">// 定位精确度</span></span><br><span class="line">    _manager<span class="variable">.desiredAccuracy</span> = kCLLocationAccuracyBest;</span><br><span class="line">    <span class="comment">// 判断系统是否大于等于iOS8.0；</span></span><br><span class="line">    <span class="keyword">if</span> ([[<span class="built_in">UIDevice</span> currentDevice]<span class="variable">.systemVersion</span> floatValue] &gt;= <span class="number">8.0</span>) &#123;</span><br><span class="line">        <span class="comment">// 设置定位权限</span></span><br><span class="line">        <span class="comment">// 一直允许 NSLocationAlwaysUsageDescription</span></span><br><span class="line">        [_manager requestAlwaysAuthorization];</span><br><span class="line">        <span class="comment">// 使用时候允许 NSLocationWhenInUseUsageDescription</span></span><br><span class="line"><span class="comment">//        [manager requestWhenInUseAuthorization];</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 开始定位</span></span><br><span class="line">    [_manager startUpdatingLocation];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - CLLocationManagerDelegate 代理</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)locationManager:(CLLocationManager *)manager</span><br><span class="line">     didUpdateLocations:(<span class="built_in">NSArray</span>&lt;CLLocation *&gt; *)locations __OSX_<span class="built_in">AVAILABLE_STARTING</span>(__MAC_NA,__IPHONE_6_0)&#123;</span><br><span class="line">    </span><br><span class="line">    CLLocation *location = [locations firstObject];</span><br><span class="line">    <span class="keyword">double</span> lati = location<span class="variable">.coordinate</span><span class="variable">.latitude</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">double</span> longti = location<span class="variable">.coordinate</span><span class="variable">.longitude</span>;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"locationManager：位置发生更新(%f, %f)"</span>, lati, longti);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark 返回标记视图</span></span><br><span class="line">- (<span class="built_in">MKAnnotationView</span> *)mapView:(<span class="built_in">MKMapView</span> *)mapView viewForAnnotation:(<span class="keyword">id</span>&lt;<span class="built_in">MKAnnotation</span>&gt;)annotation&#123;</span><br><span class="line">    <span class="comment">// 如果是系统的标记 则反空 或者隐藏</span></span><br><span class="line">    <span class="keyword">if</span> ([annotation isKindOfClass:[<span class="built_in">MKUserLocation</span> class]]) &#123;</span><br><span class="line">        <span class="built_in">MKPinAnnotationView</span> *view = [[<span class="built_in">MKPinAnnotationView</span> alloc] init];</span><br><span class="line">        view<span class="variable">.hidden</span> = <span class="literal">YES</span>;</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果是自己添加的标记物 则去创建气泡注释</span></span><br><span class="line">    <span class="keyword">if</span> ([annotation isKindOfClass:[MyAnnotation class]]) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 设置重用标识符</span></span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">NSString</span> *reuseIdentifi = <span class="string">@"pin"</span>;</span><br><span class="line">    <span class="comment">// 去重用池中查找</span></span><br><span class="line">    <span class="built_in">MKPinAnnotationView</span> *pinView = (<span class="built_in">MKPinAnnotationView</span> *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifi];</span><br><span class="line">    <span class="comment">// 如果没有则创建</span></span><br><span class="line">    <span class="keyword">if</span> (pinView == <span class="literal">nil</span>) &#123;</span><br><span class="line">        pinView = [[<span class="built_in">MKPinAnnotationView</span> alloc] initWithAnnotation:annotation reuseIdentifier:reuseIdentifi];</span><br><span class="line">           &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> pinView;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>这里要注意一个坑：mapView和manager属性，我们要把这两个属性声明成全局变量，要是用局部变量的话，是否允许定位的对话框就会一闪而过。</p>
+<h3 id="u5730_u7406_u7F16_u7801"><a href="#u5730_u7406_u7F16_u7801" class="headerlink" title="地理编码"></a>地理编码</h3><p>除了提供位置跟踪功能之外，在定位服务中还包含CLGeocoder类用于处理地理编码和逆地理编码（又叫反地理编码）功能。</p>
+<p>地理编码：根据给定的位置（通常是地名）确定地理坐标(经、纬度)。</p>
+<p>逆地理编码：可以根据地理坐标（经、纬度）确定位置信息（街道、门牌等）。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 地理编码类</span></span><br><span class="line">    CLGeocoder *geocoder = [[CLGeocoder alloc] init];</span><br><span class="line">    <span class="comment">// 地理编码，将地理位置转换成经纬度</span></span><br><span class="line"><span class="comment">//    [geocoder geocodeAddressDictionary:&lt;#(nonnull NSDictionary *)#&gt; completionHandler:&lt;#^(NSArray&lt;CLPlacemark *&gt; * _Nullable placemarks, NSError * _Nullable error)completionHandler#&gt;]</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 地理逆编码, 将经纬度转换成地理位置</span></span><br><span class="line">    [geocoder reverseGeocodeLocation:location completionHandler:^(<span class="built_in">NSArray</span>&lt;CLPlacemark *&gt; * _Nullable placemarks, <span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        CLPlacemark *placeMark = [placemarks firstObject];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 详细地址信息字典，包含以下部分信息</span></span><br><span class="line">        <span class="built_in">NSDictionary</span> *dic = placeMark<span class="variable">.addressDictionary</span>;</span><br><span class="line">        <span class="comment">// 城市</span></span><br><span class="line">        <span class="built_in">NSString</span> *city = dic[<span class="string">@"City"</span>];</span><br><span class="line">        <span class="comment">// 国家</span></span><br><span class="line">        <span class="built_in">NSString</span> *country = dic[<span class="string">@"Country"</span>];</span><br><span class="line">        <span class="comment">// 国家编码</span></span><br><span class="line">        <span class="built_in">NSString</span> *countryCode = dic[<span class="string">@"CountryCode"</span>];</span><br><span class="line">        <span class="comment">// 地名</span></span><br><span class="line">        <span class="built_in">NSString</span> *name = dic[<span class="string">@"name"</span>];</span><br><span class="line">        <span class="comment">// 地区</span></span><br><span class="line">        <span class="built_in">NSString</span> *formattedAddressLines = [dic[<span class="string">@"FormattedAddressLines"</span>] firstObject];</span><br><span class="line">        <span class="comment">// 州</span></span><br><span class="line">        <span class="built_in">NSString</span> *state = dic[<span class="string">@"State"</span>];</span><br><span class="line">        <span class="comment">// 区</span></span><br><span class="line">        <span class="built_in">NSString</span> *subLocality = dic[<span class="string">@"SubLocality"</span>];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"city == %@ country == %@ name == %@"</span>,city, country, name);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,dic);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"name = %@, thoroughfare = %@, country = %@"</span>, placeMark<span class="variable">.name</span>, placeMark<span class="variable">.thoroughfare</span>, placeMark<span class="variable">.country</span>);</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<h3 id="u5927_u5934_u9488"><a href="#u5927_u5934_u9488" class="headerlink" title="大头针"></a>大头针</h3><p>在iOS开发中经常会标记某个位置，需要使用地图标注，也就是大家俗称的“大头针”。只要一个NSObject类实现MKAnnotation协议就可以作为一个大头针，通常会重写协议中coordinate（标记位置）、title（标题）、subtitle（子标题）三个属性，然后在程序中创建大头针对象并调用addAnnotation:方法添加大头针即可</p>
+<p>MyAnnotation.h</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  MyAnnotation.h</span></span><br><span class="line"><span class="comment">//  Jared_Map</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Jared on 15/2/19.</span></span><br><span class="line"><span class="comment">//  Copyright © 2015年 管现文. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;MapKit/MapKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">MyAnnotation</span> : <span class="title">NSObject</span>&lt;<span class="title">MKAnnotation</span>&gt;</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>, <span class="keyword">readonly</span>)<span class="built_in">NSString</span> *title;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>, <span class="keyword">readonly</span>)<span class="built_in">NSString</span> *subtitle;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>)CLLocationCoordinate2D coordinate;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTitle:(<span class="built_in">NSString</span> *)title subTitle:(<span class="built_in">NSString</span> *)subTitle coordinate:(CLLocationCoordinate2D)coordinate;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>MyAnnotation.m</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  MyAnnotation.m</span></span><br><span class="line"><span class="comment">//  Jared_Map</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Jared on 15/2/19.</span></span><br><span class="line"><span class="comment">//  Copyright © 2015年 管现文. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">"MyAnnotation.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MyAnnotation</span></span></span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTitle:(<span class="built_in">NSString</span> *)title subTitle:(<span class="built_in">NSString</span> *)subTitle coordinate:(CLLocationCoordinate2D)coordinate&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        _title = title;</span><br><span class="line">        _subtitle = subTitle;</span><br><span class="line">        _coordinate = coordinate;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>ViewController.m (还是在上面的工程里面的写的)</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ViewController.m</span></span><br><span class="line"><span class="comment">//  Jared_Map</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Jared on 15/2/19.</span></span><br><span class="line"><span class="comment">//  Copyright © 2015年 管现文. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="preprocessor">#pragma mark 返回标记视图</span></span><br><span class="line">- (<span class="built_in">MKAnnotationView</span> *)mapView:(<span class="built_in">MKMapView</span> *)mapView viewForAnnotation:(<span class="keyword">id</span>&lt;<span class="built_in">MKAnnotation</span>&gt;)annotation&#123;</span><br><span class="line">    <span class="comment">// 如果是系统的标记 则反空 或者隐藏</span></span><br><span class="line">    <span class="keyword">if</span> ([annotation isKindOfClass:[<span class="built_in">MKUserLocation</span> class]]) &#123;</span><br><span class="line">        <span class="built_in">MKPinAnnotationView</span> *view = [[<span class="built_in">MKPinAnnotationView</span> alloc] init];</span><br><span class="line">        view<span class="variable">.hidden</span> = <span class="literal">YES</span>;</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果是自己添加的标记物 则去创建气泡注释</span></span><br><span class="line">    <span class="keyword">if</span> ([annotation isKindOfClass:[MyAnnotation class]]) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 设置重用标识符</span></span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">NSString</span> *reuseIdentifi = <span class="string">@"pin"</span>;</span><br><span class="line">    <span class="comment">// 去重用池中查找</span></span><br><span class="line">    <span class="built_in">MKPinAnnotationView</span> *pinView = (<span class="built_in">MKPinAnnotationView</span> *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifi];</span><br><span class="line">    <span class="comment">// 如果没有则创建</span></span><br><span class="line">    <span class="keyword">if</span> (pinView == <span class="literal">nil</span>) &#123;</span><br><span class="line">        pinView = [[<span class="built_in">MKPinAnnotationView</span> alloc] initWithAnnotation:annotation reuseIdentifier:reuseIdentifi];</span><br><span class="line">        <span class="comment">// 滑落动画</span></span><br><span class="line">        pinView<span class="variable">.animatesDrop</span> = <span class="literal">YES</span>;</span><br><span class="line">        <span class="comment">// 改变大头针的颜色</span></span><br><span class="line">        pinView<span class="variable">.pinTintColor</span> = [<span class="built_in">UIColor</span> purpleColor];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 左边可编辑区域</span></span><br><span class="line">        pinView<span class="variable">.leftCalloutAccessoryView</span> = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">50</span>, <span class="number">50</span>)];</span><br><span class="line">        <span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"1.png"</span>]];</span><br><span class="line">        [pinView<span class="variable">.leftCalloutAccessoryView</span> addSubview:imageView];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 右边可编辑区域</span></span><br><span class="line">        pinView<span class="variable">.rightCalloutAccessoryView</span> = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">50</span>, <span class="number">50</span>)];</span><br><span class="line">        <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeSystem</span>];</span><br><span class="line">        button<span class="variable">.frame</span> = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">30</span>);</span><br><span class="line">        [button setTitle:<span class="string">@"GO"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(clickAction) forControlEvents:(<span class="built_in">UIControlEventTouchUpInside</span>)];</span><br><span class="line">        [pinView<span class="variable">.rightCalloutAccessoryView</span> addSubview:button];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 是否显示气泡</span></span><br><span class="line">        pinView<span class="variable">.canShowCallout</span> = <span class="literal">YES</span>;</span><br><span class="line">        <span class="keyword">return</span> pinView;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><blockquote>
+<p>由于定位和地图框架中用到了诸多类，容易混淆，下面简单对比一下。</p>
+<p>CLLocation：用于表示位置信息，包含地理坐标、海拔等信息，包含在CoreLoaction框架中。</p>
+<p>MKUserLocation：一个特殊的大头针，表示用户当前位置。</p>
+<p>CLPlacemark：定位框架中地标类，封装了详细的地理信息。</p>
+<p>MKPlacemark：类似于CLPlacemark，只是它在MapKit框架中，可以根据CLPlacemark创建MKPlacemark。</p>
+</blockquote>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/20/iOS-使用WebViewJavascriptBridge实现OC与JS交互/" rel="next" title="[iOS] 使用WebViewJavascriptBridge实现OC与JS交互">
+                <i class="fa fa-chevron-left"></i> [iOS] 使用WebViewJavascriptBridge实现OC与JS交互
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/09/运用第三方讯飞语音实现语音输入/" rel="prev" title="第三方讯飞语音">
+                第三方讯飞语音 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/02/19/iOS-系统自带地图-定位功能/"
+     data-title="iOS开发-系统自带地图,定位功能"
+     data-content=""
+     data-url="http://yoursite.com/2015/02/19/iOS-系统自带地图-定位功能/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/02/19/iOS-系统自带地图-定位功能/"
+           data-title="iOS开发-系统自带地图,定位功能" data-url="http://yoursite.com/2015/02/19/iOS-系统自带地图-定位功能/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://tp4.sinaimg.cn/3226343607/180/5747450100/1" alt="Jared" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Jared</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">大家好，我是管现文，英文名Jared。欢迎来到我的个人技术博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">标签</span>
+              
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/bhuiyi1314" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u89C8"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B9A_u4F4D"><span class="nav-number">2.</span> <span class="nav-text">定位</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B9A_u4F4D_u529F_u80FD"><span class="nav-number">2.0.1.</span> <span class="nav-text">定位功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u76F8_u5173_u4EE3_u7801"><span class="nav-number">2.1.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5730_u7406_u7F16_u7801"><span class="nav-number">3.</span> <span class="nav-text">地理编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5927_u5934_u9488"><span class="nav-number">4.</span> <span class="nav-text">大头针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jared</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jared1016"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
