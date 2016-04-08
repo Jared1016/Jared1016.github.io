@@ -74,7 +74,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c04e18b7jw1f2p94w0n5rj216y0kq1hb.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c04e18b7jw1f2p95vw9lcj210k0cw4qp.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c04e18b7jw1f2p95xejw6j217c0futj1.jpg">
-<meta property="og:updated_time" content="2016-04-08T10:24:36.000Z">
+<meta property="og:updated_time" content="2016-04-08T13:43:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS之移动支付">
 <meta name="twitter:description" content="iOS 移动支付之种类iOS 端的移动支付，大概包括：支付宝支付、微信支付、银联卡支付、paypal支付，现在又多出一个Apple pay支付；
@@ -273,14 +273,12 @@
 <p>其中小方框中的为必须加入，而除了小方框以外的，那就要看你们后台人员是否将签名成功字符串格式化的订单字符串，给你传到前端来，如果没有，那就必须你自己在前端处理； 按理说，这些应该由后台来处理，为了订单信息的安全，以及前端业务的轻运行，都该有后端来处理（注：这点不懂，不要紧，后面还会根据代码在进行讲解;</p>
 <h3 id="u96C6_u6210_u4E2D_u53EF_u80FD_u9047_u5230_u7684_u9519_u8BEF"><a href="#u96C6_u6210_u4E2D_u53EF_u80FD_u9047_u5230_u7684_u9519_u8BEF" class="headerlink" title="集成中可能遇到的错误"></a>集成中可能遇到的错误</h3><p>1）Cannot find interface declaration for ‘NSObject’</p>
 <p><img src="http://ww2.sinaimg.cn/mw690/c04e18b7jw1f2p94slnvcj20eu0f2gx4.jpg"></p>
-<p>解决方案：a : 可以在报错的文件中加入#import Foundation/Foundation.h(这个框架要用尖括号括起来)</p>
-<p> b:可以建个pch文件加入:</p>
-  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#ifdef</span> __OBJC__</span><br><span class="line"><span class="id">#import</span> UIKit/UIKit<span class="class">.h</span></span><br><span class="line"><span class="id">#import</span> Foundation/Foundation<span class="class">.h</span></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-<p>   2)提示找不到 openssl/asn1.h 文件</p>
-<p>   <img src="http://ww1.sinaimg.cn/mw690/c04e18b7jw1f2p94ta8msj20r20hitq9.jpg"></p>
-<p>   解决方案：Build Settings –&gt; Search Paths –&gt; Header Search paths:$(PROJECT_DIR)/ASPayDemo/Alipay</p>
+<p>解决方案：可以在报错的文件中加入#import Foundation/Foundation.h(这个框架要用尖括号括起来)</p>
+<p>2)提示找不到 openssl/asn1.h 文件</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/c04e18b7jw1f2p94ta8msj20r20hitq9.jpg"></p>
+<p>解决方案：Build Settings –&gt; Search Paths –&gt; Header Search paths:$(PROJECT_DIR)/ASPayDemo/Alipay</p>
 <p><img src="http://ww1.sinaimg.cn/mw690/c04e18b7jw1f2p94w0n5rj216y0kq1hb.jpg"></p>
-<p>   3)_CNCopyCurrentNetworkInfo,referenced from:</p>
+<p>3)_CNCopyCurrentNetworkInfo,referenced from:</p>
 <p><img src="http://ww1.sinaimg.cn/mw690/c04e18b7jw1f2p95vw9lcj210k0cw4qp.jpg"></p>
 <p>解决方案：添加SystemConfiguration.framework</p>
 <p><img src="http://ww4.sinaimg.cn/mw690/c04e18b7jw1f2p95xejw6j217c0futj1.jpg"></p>
