@@ -51,19 +51,19 @@
 
 
 
-<meta name="description" content="摘要：Core Data是iOS5之后才出现的一个框架，它提供了对象-关系映射(ORM)的功能，即能够将OC对象转化成数据，保存在SQLite数据库文件中，也能够将保存在数据库中的数据还原成OC对象。在此数据操作期间，我们不需要编写任何SQL语句。
-Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳方式，本质上来说，Core Data使用的就是SQLite，但是通过一系列特性">
+<meta name="description" content="开篇最近终于能够静下心来写点东西了,好久没写了,感觉思绪有点乱,但是吧,不管作为一个工作的总结,还是作为一个技术的分享,都是很值得去写下来的.公司准备开发一款电商平台,从准备到上线,大约用了多半年时间.时间紧任务重的情况下,第一版本终于上线.由于之前工作的积累,很多模块都做到了封装,但是具体实施起来也是遇到很多困难.
+总结技术之路,需要不断的学习,非常感谢之前在工作,学习中中对我帮助过的人.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS开发--CoreData">
-<meta property="og:url" content="http://yoursite.com/2014/05/10/iOS开发-CoreData/index.html">
+<meta property="og:title" content="[iOS分享-搭建电商平台]一 开篇介绍">
+<meta property="og:url" content="http://yoursite.com/2016/03/17/iOS分享-搭建电商平台/index.html">
 <meta property="og:site_name" content="Jared">
-<meta property="og:description" content="摘要：Core Data是iOS5之后才出现的一个框架，它提供了对象-关系映射(ORM)的功能，即能够将OC对象转化成数据，保存在SQLite数据库文件中，也能够将保存在数据库中的数据还原成OC对象。在此数据操作期间，我们不需要编写任何SQL语句。
-Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳方式，本质上来说，Core Data使用的就是SQLite，但是通过一系列特性">
-<meta property="og:updated_time" content="2016-01-22T11:58:08.000Z">
+<meta property="og:description" content="开篇最近终于能够静下心来写点东西了,好久没写了,感觉思绪有点乱,但是吧,不管作为一个工作的总结,还是作为一个技术的分享,都是很值得去写下来的.公司准备开发一款电商平台,从准备到上线,大约用了多半年时间.时间紧任务重的情况下,第一版本终于上线.由于之前工作的积累,很多模块都做到了封装,但是具体实施起来也是遇到很多困难.
+总结技术之路,需要不断的学习,非常感谢之前在工作,学习中中对我帮助过的人.">
+<meta property="og:updated_time" content="2017-11-08T02:46:26.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS开发--CoreData">
-<meta name="twitter:description" content="摘要：Core Data是iOS5之后才出现的一个框架，它提供了对象-关系映射(ORM)的功能，即能够将OC对象转化成数据，保存在SQLite数据库文件中，也能够将保存在数据库中的数据还原成OC对象。在此数据操作期间，我们不需要编写任何SQL语句。
-Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳方式，本质上来说，Core Data使用的就是SQLite，但是通过一系列特性">
+<meta name="twitter:title" content="[iOS分享-搭建电商平台]一 开篇介绍">
+<meta name="twitter:description" content="开篇最近终于能够静下心来写点东西了,好久没写了,感觉思绪有点乱,但是吧,不管作为一个工作的总结,还是作为一个技术的分享,都是很值得去写下来的.公司准备开发一款电商平台,从准备到上线,大约用了多半年时间.时间紧任务重的情况下,第一版本终于上线.由于之前工作的积累,很多模块都做到了封装,但是具体实施起来也是遇到很多困难.
+总结技术之路,需要不断的学习,非常感谢之前在工作,学习中中对我帮助过的人.">
 
 
 
@@ -75,7 +75,7 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
   };
 </script>
 
-  <title> iOS开发--CoreData | Jared </title>
+  <title> [iOS分享-搭建电商平台]一 开篇介绍 | Jared </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -185,7 +185,7 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
             
             
               
-                iOS开发--CoreData
+                [iOS分享-搭建电商平台]一 开篇介绍
               
             
           </h1>
@@ -194,8 +194,8 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2014-05-10T20:08:41+08:00" content="2014-05-10">
-              2014-05-10
+            <time itemprop="dateCreated" datetime="2016-03-17T10:29:24+08:00" content="2016-03-17">
+              2016-03-17
             </time>
           </span>
 
@@ -205,8 +205,8 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/05/10/iOS开发-CoreData/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/10/iOS开发-CoreData/" itemprop="commentsCount"></span>
+                <a href="/2016/03/17/iOS分享-搭建电商平台/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/17/iOS分享-搭建电商平台/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -225,9 +225,8 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
       
 
       
-        <span itemprop="articleBody"><h3 id="u6458_u8981_uFF1A"><a href="#u6458_u8981_uFF1A" class="headerlink" title="摘要："></a>摘要：</h3><p>Core Data是iOS5之后才出现的一个框架，它提供了对象-关系映射(ORM)的功能，即能够将OC对象转化成数据，保存在SQLite数据库文件中，也能够将保存在数据库中的数据还原成OC对象。在此数据操作期间，我们不需要编写任何SQL语句。</p>
-<p>Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳方式，本质上来说，Core Data使用的就是SQLite，但是通过一系列特性避免了使用SQL的一些列的麻烦，不仅如此，他还能够合理管理内存，反正好处很多，我们推荐使用。</p>
-<p>在这个教程中，我们将会创建一个Core Data的可视模型，之后再做一个Table View，让Table View的内容能够存储在数据模型里。</p>
+        <span itemprop="articleBody"><h3 id="u5F00_u7BC7"><a href="#u5F00_u7BC7" class="headerlink" title="开篇"></a>开篇</h3><p>最近终于能够静下心来写点东西了,好久没写了,感觉思绪有点乱,但是吧,不管作为一个工作的总结,还是作为一个技术的分享,都是很值得去写下来的.<br>公司准备开发一款电商平台,从准备到上线,大约用了多半年时间.时间紧任务重的情况下,第一版本终于上线.由于之前工作的积累,很多模块都做到了封装,但是具体实施起来也是遇到很多困难.</p>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><p>技术之路,需要不断的学习,非常感谢之前在工作,学习中中对我帮助过的人.</p>
 </span>
       
     </div>
@@ -239,17 +238,13 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/04/15/Objective-C-KVC和KVO的使用/" rel="next" title="Objective-C KVC和KVO的使用">
-                <i class="fa fa-chevron-left"></i> Objective-C KVC和KVO的使用
+              <a href="/2016/03/09/iOS利用webView控件加载本地HTML5/" rel="next" title="iOS利用webView控件加载本地HTML5">
+                <i class="fa fa-chevron-left"></i> iOS利用webView控件加载本地HTML5
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/06/20/Socket实现即时通信/" rel="prev" title="Socket实现即时通信">
-                Socket实现即时通信 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -264,10 +259,10 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/05/10/iOS开发-CoreData/"
-     data-title="iOS开发--CoreData"
+        <div class="ds-share flat" data-thread-key="2016/03/17/iOS分享-搭建电商平台/"
+     data-title="[iOS分享-搭建电商平台]一 开篇介绍"
      data-content=""
-     data-url="http://yoursite.com/2014/05/10/iOS开发-CoreData/">
+     data-url="http://yoursite.com/2016/03/17/iOS分享-搭建电商平台/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -298,8 +293,8 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/05/10/iOS开发-CoreData/"
-           data-title="iOS开发--CoreData" data-url="http://yoursite.com/2014/05/10/iOS开发-CoreData/">
+      <div class="ds-thread" data-thread-key="2016/03/17/iOS分享-搭建电商平台/"
+           data-title="[iOS分享-搭建电商平台]一 开篇介绍" data-url="http://yoursite.com/2016/03/17/iOS分享-搭建电商平台/">
       </div>
     
   </div>
@@ -399,7 +394,7 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6458_u8981_uFF1A"><span class="nav-number">1.</span> <span class="nav-text">摘要：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5F00_u7BC7"><span class="nav-number">1.</span> <span class="nav-text">开篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
