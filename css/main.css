@@ -683,7 +683,7 @@ body {
   background: #222;
 }
 .header {
-  background: #fff;
+  background: url("http://tva1.sinaimg.cn/crop.0.0.300.300.180/c04e18b7jw8f2p91gqyh1j208c08c3yp.jpg");
 }
 .header-inner {
   position: relative;
@@ -965,7 +965,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b31cff;
+  background: #95ff9d;
 }
 .sidebar-nav {
   margin: 0 0 20px;
