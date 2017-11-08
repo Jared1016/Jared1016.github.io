@@ -67,6 +67,33 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
 <meta name="twitter:description" content="摘要：Core Data是iOS5之后才出现的一个框架，它提供了对象-关系映射(ORM)的功能，即能够将OC对象转化成数据，保存在SQLite数据库文件中，也能够将保存在数据库中的数据还原成OC对象。在此数据操作期间，我们不需要编写任何SQL语句。
 Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳方式，本质上来说，Core Data使用的就是SQLite，但是通过一系列特性">
 
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -76,6 +103,8 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
     motion: true
   };
 </script>
+
+
 
   <title> iOS开发--CoreData | Jared </title>
 </head>
@@ -274,24 +303,28 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/05/10/iOS开发-CoreData/"
-     data-title="iOS开发--CoreData"
-     data-content=""
-     data-url="http://yoursite.com/2014/05/10/iOS开发-CoreData/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
 </div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
       
     </div>
   </div>
@@ -448,11 +481,11 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
 </div>
 
 <div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
-                                 本站总访问量<span id="busuanzi_value_site_pv"></span>次
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+                               本站总访问量<span id="busuanzi_value_site_uv"></span>次
                              </span>
 </div>
-
+<!--
 <div class="powered-by">
   由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
@@ -463,7 +496,7 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
     NexT.Mist
   </a>
 </div>
-
+-->
 
 
       </div>
@@ -497,8 +530,6 @@ Core Data是iOS编程，乃至Mac编程中使用持久性数据存储的最佳�
     })();
   </script>
     
-     
-
 
     
   
